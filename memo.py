@@ -35,7 +35,7 @@ def index_page():
     for rid, rt, item_text in records:
         rt = re.sub('[.][0-9]+$', '', rt)  # drop subsec digits
         buf.append("<tr><th>%s</th><td>%s</td><td>%s</td></tr>" % (rid, rt, item_text))
-    html = INDEX_PAGE % '\n'.join(buf)
+    html = INDEX_PAGE.format(filter_text=filter_text or 'keyword', table_content='\n'.join(buf))
 
     return html
 
